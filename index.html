@@ -1,0 +1,75 @@
+import { useState } from "react";
+import { Sun, Moon, Phone, Instagram, Twitter, Facebook, Github } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export default function Home() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleTheme = () => setDarkMode(!darkMode);
+
+  return (
+    <div className={darkMode ? "dark bg-pink-100 text-pink-900" : "bg-white text-pink-800"}>
+      <div className="flex min-h-screen">
+        {/* Sidebar */}
+        <aside className="w-16 bg-white dark:bg-pink-200 flex flex-col items-center py-4 space-y-6 shadow-lg">
+          <a href="https://wa.me/256757302782" target="_blank"><Phone className="w-6 h-6" /></a>
+          <a href="https://instagram.com/amiirah___m" target="_blank"><Instagram className="w-6 h-6" /></a>
+          <a href="https://twitter.com/AmiraMohamed" target="_blank"><Twitter className="w-6 h-6" /></a>
+          <a href="https://facebook.com/adna%20mohamett" target="_blank"><Facebook className="w-6 h-6" /></a>
+          <a href="https://github.com/amira335" target="_blank"><Github className="w-6 h-6" /></a>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 p-6">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold">Amira Mohamed</h1>
+            <Button onClick={toggleTheme} variant="ghost">
+              {darkMode ? <Sun /> : <Moon />}
+            </Button>
+          </div>
+
+          {/* Profile */}
+          <section className="mt-8 flex flex-col items-center">
+            <img
+              src="/adna image.jpeg"
+              alt="Profile"
+              className="w-40 h-40 rounded-full border-4 border-pink-300 object-cover"
+            />
+            <p className="mt-4 max-w-xl text-center">
+              Hi! I’m Amira Mohamed, a passionate developer and designer based in Kampala, Uganda. I specialize in mobile and web interfaces with a deep love for beautiful UI/UX.
+            </p>
+          </section>
+
+          {/* Skills */}
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold mb-2">Skills</h2>
+            <div className="flex flex-wrap gap-2">
+              {["Java", "HTML", "CSS", "Flutter", "Dart", "UI", "UX"].map((skill) => (
+                <span key={skill} className="px-3 py-1 bg-pink-200 text-pink-900 rounded-full text-sm">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </section>
+
+          {/* Projects */}
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold mb-2">Projects</h2>
+            <p className="text-sm">Coming soon...</p>
+          </section>
+
+          {/* Contact */}
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold mb-2">Contact</h2>
+            <p>Email: amiira@example.com (replace with your real email)</p>
+          </section>
+
+          {/* Footer */}
+          <footer className="mt-10 text-center text-xs text-pink-600">
+            © {new Date().getFullYear()} Amira Mohamed
+          </footer>
+        </main>
+      </div>
+    </div>
+  );
+}
